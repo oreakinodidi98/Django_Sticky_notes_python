@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!-- registration page -->
+{% block title %}Board - {{ page_title }} {% endblock %}
+
+{% block content %}
+<!-- register page -->
+<div class="form-container">
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <!-- name -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <!-- username -->
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <!-- email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <!-- password -->
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <!-- confirm password -->
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <!-- date of birth -->
+        <div class="form-group">
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+        </div>
+        <!-- register button -->
+        <div class="form-group">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

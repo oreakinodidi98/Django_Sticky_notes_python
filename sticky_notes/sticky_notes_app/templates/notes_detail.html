@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Board - {{ note.title }} {% endblock %}
+
+{% block content %}
+
+<!-- display specific posts -->
+
+<h1>{{ note.title }}</h1>
+<div class="note-card">
+    <p>{{ note.content }}</p>
+    <p>{{ note.author }}</p>
+    <p>{{ note.created_at }}</p>
+    <div class="form-group">
+        <form method="post" action="{% url 'notes_delete' pk=note.pk %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+<a href="{% url 'notes_update' pk=note.pk %}">Edit</a>
+<a href="{% url 'home'%}">Home</a>
+
+{% endblock %}
