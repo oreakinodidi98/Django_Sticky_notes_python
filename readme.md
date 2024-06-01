@@ -93,13 +93,17 @@ user.saave()
 
 ## create artifact
 
-- pip install build
-- pthon -m build
-- python setup.py sdist bdist_wheel
 - create a .pypirc file
 - create a .toml file
 - create a setup.py & setup.cfg file
-  
+- pip install build
+- pip install wheel
+- pthon -m build
+  - if succesfful creates a dist folder for artifacts
+- python setup.py sdist bdist_wheel
+- python setup.py sdist upload -r demo-artifact
+  - Python will know to upload the package to the repository URL specified under the demo-artifact section in the .pypirc file
+
 - [packaging](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 - [configuration](https://pip.pypa.io/en/latest/topics/configuration/)
 - [toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#writing-pyproject-toml)
