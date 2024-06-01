@@ -1,5 +1,8 @@
 from django import forms
-from .models import Stick_notes, Author
+from .models import Stick_notes
+# use default user creation form from django
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 # form for creating notes
 class Stick_notesForm(forms.ModelForm):
@@ -7,12 +10,14 @@ class Stick_notesForm(forms.ModelForm):
         model = Stick_notes
         fields = ('title', 'content', 'author')
 
-# form for sighning in user
-class AuthorForm(forms.ModelForm):
+# form for registering user
+class UserRegisterForm(UserCreationForm):
+
+    email = forms.EmailField()
     class Meta:
-        model = Author
-        fields = ('name','username', 'email', 'password', 'date_of_birth')
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
         widgets = {
-            'password': forms.PasswordInput(),
-            'date_of_birth': forms.DateInput()
+            'password1': forms.PasswordInput(),
+            'password2': forms.PasswordInput()
         }
